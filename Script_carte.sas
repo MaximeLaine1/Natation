@@ -47,6 +47,26 @@ data &lib..carte_3;
 run;*/
 
 
+
+/*Nombre de département différent*/
+Proc sql ;
+	select 
+		count(distinct id) into :nb_dep
+	From &lib..carte_1;
+quit ;
+%put &nb_dep;
+
+/*Nombre de nageurs différent*/
+Proc sql ;
+	select 
+		count(distinct nom_prenom) into :nb_nag
+	From &lib..carte_1;
+quit ;
+%put &nb_nag;
+
+
+
+
 title1 'Carte: Nombre de nageurs par départements';
 /*carte des régions*/             /*Mieux*/
 proc gmap data = &lib..carte_2 map=maps.france all;
